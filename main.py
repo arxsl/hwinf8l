@@ -1,0 +1,17 @@
+'''
+
+'''
+
+import math
+
+def p(x):
+    if x < 2:
+        return "Нет"
+    for i in range(2, int(math.sqrt(x)) + 1):
+        if x % i == 0:
+            return "Нет"
+    return "Да"
+
+x = int(input("Введите число: "))
+
+print(p(x))
