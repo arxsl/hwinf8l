@@ -7,9 +7,16 @@ def average(*args):
     c = 0
     
     for a in args:
-        t += a
-        c += 1
-    
+        if isinstance(a, (int, float)):
+            t += a
+            c += 1
+        elif isinstance(a, str):
+            try:
+                t += float(a)
+                c += 1
+            except ValueError:
+                continue
+            
     if c == 0:
         return 0
     else:
