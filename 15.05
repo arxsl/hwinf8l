@@ -2,26 +2,35 @@
 
 '''
 
-def U(a, base):
+def U(x, base):
     
     alf = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    if a == 0:
+    c = len(x)-1
+    e = 0 
+    for i in x:
         
-        return alf[0]
+        e+=alf.index(i)*(base**c)
+        c-=1
+    
+    return e
 
-    n = []
+
+a = U('105', 8) + U('5F', 37) * U('1011', 3) ** U('BA', 15) 
+
+   
+def H(a, base):    
+    
+    alf = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    e = ''
     while a > 0:
         
-        e = a % base
-        a = a // base 
-        n.append(alf[e])
+        e += alf[a % base]
+        a //= base
 
-    return ''.join(reversed(n))
+    return e
     
-a = int('105', 8) + (5 * 37 + 15) * int('1011', 3) ** int('BA', 15)
-m = U(a, 24)
 n = 0
-for i in m:
+for i in H(a, 24):
     
     if i == 'H':
         
